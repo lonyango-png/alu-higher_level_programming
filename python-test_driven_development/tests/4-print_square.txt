@@ -1,0 +1,82 @@
+The ``4-print_square`` module
+=============================
+
+Using ``print_square``
+----------------------
+
+Import the function from the module:
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Squares of different sizes:
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+    >>> print_square(1)
+    #
+    >>> print_square(2)
+    ##
+    ##
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+A size of 0 prints nothing:
+
+    >>> print_square(0)
+
+A negative size raises a ValueError:
+
+    >>> print_square(-1)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+    >>> print_square(-5)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+The size must be an integer:
+
+    >>> print_square(3.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square(-1.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square(0.0)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square("4")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square([2])
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square(float('nan'))
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+    >>> print_square(float('inf'))
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Wrong number of arguments:
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+    >>> print_square(2, 3)
+    Traceback (most recent call last):
+    TypeError: print_square() takes 1 positional argument but 2 were given

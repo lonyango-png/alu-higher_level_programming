@@ -1,0 +1,115 @@
+The ``5-text_indentation`` module
+=================================
+
+Using ``text_indentation``
+--------------------------
+
+Import the function from the module:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+The function prints no new line at the end, so print() is added to the
+examples that do not end with a delimiter.
+
+Two new lines after a dot:
+
+    >>> text_indentation("Hello. World"); print()
+    Hello.
+    <BLANKLINE>
+    World
+
+Two new lines after each of the characters . ? and :
+
+    >>> text_indentation("A. B? C: D"); print()
+    A.
+    <BLANKLINE>
+    B?
+    <BLANKLINE>
+    C:
+    <BLANKLINE>
+    D
+
+A text that ends with a delimiter:
+
+    >>> text_indentation("Hello.")
+    Hello.
+    <BLANKLINE>
+    >>> text_indentation("Really?")
+    Really?
+    <BLANKLINE>
+    >>> text_indentation("Note:")
+    Note:
+    <BLANKLINE>
+
+A text without any delimiter:
+
+    >>> text_indentation("Hello world"); print()
+    Hello world
+    >>> text_indentation("a"); print()
+    a
+
+Spaces after a delimiter are removed:
+
+    >>> text_indentation("One.    Two"); print()
+    One.
+    <BLANKLINE>
+    Two
+
+Spaces at the beginning of the text are removed:
+
+    >>> text_indentation("   Hello"); print()
+    Hello
+
+Delimiters that follow each other:
+
+    >>> text_indentation("Wait... what?")
+    Wait.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    what?
+    <BLANKLINE>
+
+A delimiter in the middle of a word:
+
+    >>> text_indentation("a.b"); print()
+    a.
+    <BLANKLINE>
+    b
+
+A text that already contains a new line:
+
+    >>> text_indentation("Line1\nLine2"); print()
+    Line1
+    Line2
+
+Empty text and text made of spaces print nothing:
+
+    >>> text_indentation("")
+    >>> text_indentation("    ")
+
+The text must be a string:
+
+    >>> text_indentation(5)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+    >>> text_indentation(["Hello."])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+    >>> text_indentation(b"Hello.")
+    Traceback (most recent call last):
+    TypeError: text must be a string
+    >>> text_indentation(1.5)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Missing argument:
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
