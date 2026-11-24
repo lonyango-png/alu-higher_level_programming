@@ -4,6 +4,7 @@
 Run with: python3 -m unittest tests/test_models/test_square.py
 """
 import io
+import os
 import unittest
 from unittest.mock import patch
 from models.base import Base
@@ -320,6 +321,31 @@ class TestSquareToDictionary(unittest.TestCase):
     def test_with_arg(self):
         with self.assertRaises(TypeError):
             Square(1).to_dictionary(1)
+
+
+class TestSquareSaveToFile(unittest.TestCase):
+    """Test the save_to_file class method called on Square."""
+
+    def tearDown(self):
+        """Remove the json file created by the tests."""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+    def test_save_to_file_none(self):
+        Square.save_to_file(None)
+        with open("Square.json") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty_list(self):
+        Square.save_to_file([])
+        with open("Square.json") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_one_square(self):
+        Square.save_to_file([Square(1, 0, 0, 5)])
+        with open("Square.json") as f:
+            self.assertEqual(f.read(),
+                             '[{"id": 5, "size": 1, "x": 0, "y": 0}]')
 
 
 if __name__ == "__main__":
