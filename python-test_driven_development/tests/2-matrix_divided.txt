@@ -122,3 +122,10 @@ Missing arguments:
     >>> matrix_divided([[1, 2]])
     Traceback (most recent call last):
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Dividing by infinity gives 0.0 for every value:
+
+    >>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]
+    >>> matrix_divided([[10, 20, 30]], float('inf'))
+    [[0.0, 0.0, 0.0]]
